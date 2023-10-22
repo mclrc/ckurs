@@ -198,21 +198,21 @@ die Canvas passt, sollen einfach die Teile ignoriert werden welche außerhalb
 liegen würden.
 */
 Canvas draw_rectangle(Canvas c, int x, int y, int width, int height) {
-  int cHeight = canvas_height(c);
-  int cWidth = canvas_width(c);
+  int c_height = canvas_height(c);
+  int c_width = canvas_width(c);
 
-  int startX = x < 0 ? 0 : x;
-  int endX = x + width - 1;
-  if (endX > cWidth - 1)
-    endX = cWidth - 1;
+  int start_x = x < 0 ? 0 : x;
+  int end_x = x + width - 1;
+  if (end_x > c_width - 1)
+    end_x = c_width - 1;
 
-  int startY = y >= cHeight ? cHeight - 1 : y;
-  int endY = y - height + 1;
-  if (endY < 0)
-    endY = 0;
+  int start_y = y >= c_height ? c_height - 1 : y;
+  int end_y = y - height + 1;
+  if (end_y < 0)
+    end_y = 0;
 
-  for (int i = startX; i <= endX; i++)
-    for (int j = startY; j >= endY; j--)
+  for (int i = start_x; i <= end_x; i++)
+    for (int j = start_y; j >= end_y; j--)
       canvas_set_black(c, i, j);
 
   return c;

@@ -123,13 +123,22 @@ Canvas sierpinski_carpet(Canvas c, int n, int x, int y) {
   int width = power(3, n);
   int segment_width = width / 3;
 
-  for (int i = 0; i < 3; i++)
-    for (int j = 0; j < 3; j++) {
-      if (i == 1 && j == 1)
-        continue;
+  // for (int i = 0; i < 3; i++)
+  //  for (int j = 0; j < 3; j++) {
+  //    if (i == 1 && j == 1)
+  //      continue;
+  //    sierpinski_carpet(c, n - 1, x + i * segment_width, y + j *
+  //    segment_width);
+  //  }
 
-      sierpinski_carpet(c, n - 1, x + i * segment_width, y + j * segment_width);
-    }
+  sierpinski_carpet(c, n - 1, x + 0 * segment_width, y + 0 * segment_width);
+  sierpinski_carpet(c, n - 1, x + 0 * segment_width, y + 1 * segment_width);
+  sierpinski_carpet(c, n - 1, x + 0 * segment_width, y + 2 * segment_width);
+  sierpinski_carpet(c, n - 1, x + 1 * segment_width, y + 0 * segment_width);
+  sierpinski_carpet(c, n - 1, x + 1 * segment_width, y + 2 * segment_width);
+  sierpinski_carpet(c, n - 1, x + 2 * segment_width, y + 0 * segment_width);
+  sierpinski_carpet(c, n - 1, x + 2 * segment_width, y + 1 * segment_width);
+  sierpinski_carpet(c, n - 1, x + 2 * segment_width, y + 2 * segment_width);
 
   return c;
 }

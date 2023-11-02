@@ -95,21 +95,20 @@ Durchmesser rufen Sie Ihre `draw_odd_circle` vier mal auf: Einmal für jeden der
 vier Pixel welche den exakten Mittelpunkt des erwünschten Kreises umgeben.
 */
 Canvas draw_circle(Canvas c, int x, int y, int diameter) {
-  int center_x = x + diameter / 2;
-  int center_y = y + diameter / 2;
   int radius = diameter / 2;
+  int center_x = x + radius;
+  int center_y = y + radius;
 
-  if (diameter % 2 == 0) {
-    draw_odd_circle(c, center_x - 1, center_y - 1, radius - 1);
-    draw_odd_circle(c, center_x, center_y, radius - 1);
-    draw_odd_circle(c, center_x - 1, center_y, radius - 1);
-    draw_odd_circle(c, center_x, center_y - 1, radius - 1);
-  } else {
-    draw_odd_circle(c, center_x, center_y, radius);
-  }
+  if (diameter % 2 == 1)
+    return draw_odd_circle(c, center_x, center_y, radius);
+
+  draw_odd_circle(c, center_x, center_y, radius - 1);
+  draw_odd_circle(c, center_x - 1, center_y, radius - 1);
+  draw_odd_circle(c, center_x - 1, center_y - 1, radius - 1);
+  draw_odd_circle(c, center_x, center_y - 1, radius - 1);
+
   return c;
 }
-
 /*
 Aufgabe 1e:
 Dadurch, dass Sie das Problem in kleinere Subprobleme geteilt haben, haben Sie
